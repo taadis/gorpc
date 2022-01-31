@@ -5,3 +5,9 @@ type Header struct {
 	ServiceMethod string // format "Service.Method"
 	Error         error
 }
+
+type Codec interface {
+	ReadHeader(*Header) error
+	ReadBody(interface{}) error
+	Write(*Header, interface{}) error
+}
